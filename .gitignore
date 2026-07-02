@@ -1,0 +1,17 @@
+node_modules/
+
+.env
+
+uploads/
+
+logs/
+
+print-jobs/
+
+printed-orders/
+
+temp/
+
+dist/
+
+*.log
