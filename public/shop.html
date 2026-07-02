@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PrintFlow Upload</title>
+<link rel="stylesheet" href="shop.css">
+</head>
+<body>
+
+<div class="app">
+
+<header class="topbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🖨️
+        </div>
+
+        <div>
+
+            <h1>PrintFlow</h1>
+
+            <p>Fast • Secure • Cloud Printing</p>
+
+        </div>
+
+    </div>
+
+    <div class="top-actions">
+
+        <div class="status-chip">
+
+            🟢 Store Online
+
+        </div>
+
+    </div>
+
+</header>
+
+    <main class="main-layout">
+
+        <!-- LEFT -->
+
+        <section class="preview-section">
+
+            <div class="upload-box">
+
+    <input
+        type="file"
+        id="file"
+        accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png"
+        hidden
+    >
+
+    <label for="file" class="upload-area">
+
+        <div class="upload-icon">
+
+            📄
+
+        </div>
+
+        <h2>
+
+            Upload Your Document
+
+        </h2>
+
+        <p>
+
+            Drag & Drop your file here
+
+        </p>
+
+        <button
+            type="button"
+            class="browse-btn"
+            onclick="document.getElementById('file').click()">
+
+            Browse Files
+
+        </button>
+
+        <small>
+
+            PDF • DOC • DOCX • PPT • PPTX • JPG • PNG
+
+        </small>
+
+        <div class="supported">
+
+            Maximum File Size : 50 MB
+
+        </div>
+
+    </label>
+
+</div>
+
+            <div class="preview-card">
+
+    <div class="preview-header">
+
+    <h3>📄 Document Preview</h3>
+
+    <div class="preview-controls">
+
+        <button
+            type="button"
+            id="prevPage"
+            class="page-btn">
+
+            ◀
+
+        </button>
+
+        <span id="pageNumber">
+
+            1
+
+        </span>
+
+        <button
+            type="button"
+            id="nextPage"
+            class="page-btn">
+
+            ▶
+
+        </button>
+
+<button
+    type="button"
+    id="zoomOut"
+    class="page-btn">
+
+    −
+
+</button>
+
+<span id="pageNumber">
+    1
+</span>
+
+/
+
+<span id="previewPageCount">
+    0
+</span>
+
+<button
+    type="button"
+    id="zoomIn"
+    class="page-btn">
+
+    +
+
+</button>
+
+    </div>
+
+</div>
+
+<div id="pdfPreview" class="preview-viewer">
+
+    <div id="thumbnailPanel" class="thumbnail-panel">
+
+    </div>
+
+<div class="pdf-stage">
+
+    <canvas id="pdfCanvas"></canvas>
+
+    <img
+        id="imagePreview"
+        style="
+            display:none;
+            max-width:100%;
+            max-height:100%;
+            border-radius:12px;
+            object-fit:contain;
+        "
+    >
+
+    <div
+        id="filePreviewCard"
+        class="file-preview-card"
+        style="display:none;">
+
+        <div
+            id="fileIcon"
+            class="file-icon">
+
+            📄
+
+        </div>
+
+        <h3 id="previewFileName">
+
+            Document
+
+        </h3>
+
+        <p id="previewFileType">
+
+            Ready to Print
+
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+
+        </section>
+
+        <!-- RIGHT -->
+
+        <section class="settings-section">
+
+            <form id="uploadForm">
+
+                <div class="card">
+
+                    <h2>Print Settings</h2>
+
+                    <label>
+                        Customer Name
+                    </label>
+
+                    <input
+                        id="customerName"
+                        type="text"
+                        placeholder="Enter Name"
+                    >
+
+                    <label>
+                        Copies
+                    </label>
+
+                    <input
+                        id="copies"
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                    <label>
+                        Paper Size
+                    </label>
+
+                    <select id="paperSize">
+
+                        <option>A4</option>
+
+                        <option>A3</option>
+
+                        <option>Letter</option>
+
+                    </select>
+
+                    <label>
+                        Color Mode
+                    </label>
+
+                    <select id="colorMode">
+
+                        <option value="bw">
+
+                            Black & White
+
+                        </option>
+
+                        <option value="color">
+
+                            Color
+
+                        </option>
+
+                    </select>
+
+                    <div class="page-grid">
+
+                        <div>
+
+                            <label>
+
+                                From
+
+                            </label>
+
+                            <input
+                                id="fromPage"
+                                type="number"
+                                value="1"
+                                min="1"
+                            >
+
+                        </div>
+
+                        <div>
+
+                            <label>
+
+                                To
+
+                            </label>
+
+                            <input
+                                id="toPage"
+                                type="number"
+                                value="1"
+                                min="1"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="summary-card">
+
+    <h2>Print Summary</h2>
+
+    <div class="summary-item">
+        <span class="summary-title">File</span>
+        <span class="summary-value" id="fileName">-</span>
+    </div>
+
+    <div class="summary-item">
+        <span class="summary-title">Total Pages</span>
+        <span class="summary-value" id="totalPages">-</span>
+    </div>
+
+    <div class="summary-item">
+        <span class="summary-title">Print Range</span>
+        <span class="summary-value" id="printPages">-</span>
+    </div>
+
+    <div class="price">
+        ₹<span id="amount">0</span>
+    </div>
+
+    <button class="pay-btn" type="submit">
+        Continue to Payment →
+    </button>
+
+</div>
+
+            </form>
+
+            <div id="status"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="upload.js"></script>
+
+</body>
+</html>

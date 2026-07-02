@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PrintFlow Shop Dashboard</title>
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>PrintFlow Dashboard</h1>
+    <button id="refreshBtn">Refresh</button>
+</header>
+
+<section class="stats">
+
+    <div class="stat-card">
+        <h3>Total Orders</h3>
+        <span id="totalOrders">0</span>
+    </div>
+
+    <div class="stat-card">
+        <h3>Revenue</h3>
+        <span id="revenue">₹0</span>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending Queue</h3>
+        <span id="pendingOrders">0</span>
+    </div>
+
+    <div class="stat-card">
+        <h3>Printed Today</h3>
+        <span id="printedOrders">0</span>
+    </div>
+    <div class="stat-card">
+<h3>Total Pages Printed</h3>
+<span id="pagesPrinted">0</span>
+</div>
+
+<div class="stat-card">
+<h3>Today's Orders</h3>
+<span id="todayOrders">0</span>
+</div>
+
+<div class="stat-card">
+<h3>Average Order Value</h3>
+<span id="avgOrder">₹0</span>
+</div>
+
+</section>
+<section class="printer-section">
+
+<div class="printer-card">
+
+<h2>Printer Settings</h2>
+
+<select id="printerSelect">
+
+<option>
+
+Loading Printers...
+
+</option>
+
+</select>
+
+<button id="savePrinterBtn">
+
+Save Printer
+
+</button>
+
+</div>
+
+</section>
+
+<section class="stats-chart">
+
+<div class="chart-card">
+
+<h2>Revenue Analytics</h2>
+
+<canvas id="revenueChart"></canvas>
+
+</div>
+
+<div class="chart-card">
+
+<h2>Order Status</h2>
+
+<canvas id="statusChart"></canvas>
+
+</div>
+
+</section>
+
+<section class="orders-section">
+
+<div class="section-header">
+
+    <h2>Order History</h2>
+
+    <div class="search-area">
+
+        <input
+            id="searchBox"
+            type="text"
+            placeholder="Search customer or order id">
+
+        <button id="searchBtn">
+
+            Search
+
+        </button>
+
+    </div>
+
+    <button id="clearHistoryBtn">
+
+        Clear History
+
+    </button>
+
+</div>
+
+    <div class="table-wrapper">
+
+        <table>
+
+<thead>
+
+<tr>
+
+<th>Order ID</th>
+
+<th>Customer</th>
+
+<th>Pages</th>
+
+<th>Amount</th>
+
+<th>Copies</th>
+
+<th>Color</th>
+
+<th>Date</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+            <tbody id="ordersTable">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

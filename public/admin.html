@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PrintFlow Admin Dashboard</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div>
+        <h1>PrintFlow Admin</h1>
+        <p>Platform Management Console</p>
+    </div>
+
+    <button id="refreshBtn">
+        Refresh
+    </button>
+</header>
+
+<section class="stats-grid">
+
+    <div class="card">
+        <h3>Total Shops</h3>
+        <span id="shopsCount">0</span>
+    </div>
+
+    <div class="card">
+        <h3>Total Users</h3>
+        <span id="usersCount">0</span>
+    </div>
+
+    <div class="card">
+        <h3>Total Orders</h3>
+        <span id="ordersCount">0</span>
+    </div>
+
+    <div class="card">
+        <h3>Total Revenue</h3>
+        <span id="revenueCount">₹0</span>
+    </div>
+
+</section>
+
+<section class="shops-section">
+
+    <div class="section-header">
+        <h2>Shop Management</h2>
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Shop Name</th>
+                    <th>Owner</th>
+                    <th>Status</th>
+                    <th>Subscription</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="shopsTable"></tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<div id="messageBox"></div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
