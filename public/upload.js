@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5001";
+const API_BASE = "https://print-flow-backend.onrender.com";
 
 const form = document.getElementById("uploadForm");
 const amountElement = document.getElementById("amount");
